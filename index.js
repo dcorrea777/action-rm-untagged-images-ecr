@@ -1,6 +1,6 @@
-import core from '@actions/core'
-import github from '@actions/github'
-import AWS from 'aws-sdk';
+const core = require('@actions/core');
+const github = require('@actions/github');
+const AWS = require('aws-sdk');
 
 (async () => {
     try {
@@ -10,7 +10,7 @@ import AWS from 'aws-sdk';
             accessKeyId: core.getInput('access_key'),
             secretAccessKey: core.getInput('secret_key')
         });
-        const repository = core.getInput('repository')
+        const repository = core.getInput('repository');
         const images = await ecr.listImages({
             repositoryName: repository,
             maxResults: 100,
@@ -21,11 +21,11 @@ import AWS from 'aws-sdk';
             const imagesDeleted = await ecr.batchDeleteImage({
                 imageIds: images.imageIds,
                 repositoryName: repository
-            }).promise()
+            }).promise();
 
             imagesDeleted.imageIds.forEach(i => console.log(`deleted images ${i.imageDigest}`))
         } else {
-            console.log('No images found to delete.')
+            console.log('No images found to delete.');
         }
 
     } catch (error) {
