@@ -8,7 +8,7 @@ jobs:
             -
                 name: remove images unlabelled
                 id: rm-images-ecr
-                uses: dcorrea777/action-rm-unlabeled-images-ecr@v1.1
+                uses: dcorrea777/action-rm-unlabeled-images-ecr@v1.2
                 with:
                     repository: 'dcorrea'
                     access_key: ${{ secrets.ACCESS_KEY }}
