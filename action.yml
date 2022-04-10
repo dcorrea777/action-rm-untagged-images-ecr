@@ -1,0 +1,20 @@
+name: 'Remove untagged images in ECR'
+author: 'Danilo Correa'
+description: 'Remove untagged images in aws schema registry (ECR)'
+inputs:
+    repository:
+        description: 'repository name'
+        required: true
+    access_key:
+        description: 'Your aws_access_key_id'
+        required: true
+    secret_key:
+        description: 'aws_secret_access_key'
+        required: true
+    region:
+        description: 'aws_secret_access_key'
+        default: 'us-east-1'
+        required: false
+runs:
+    using: 'node16'
+    main: 'dist/index.js'
